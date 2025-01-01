@@ -1,16 +1,62 @@
-# portal_berita
+# NewsApp - Mobile News Application
 
-A new Flutter project.
+NewsApp adalah aplikasi mobile native yang menampilkan berita terkini dari berbagai sumber menggunakan API dari NewsAPI. Aplikasi ini memberikan pengalaman pengguna yang sederhana dan efektif dalam menjelajahi berita dari berbagai kategori.
 
-## Getting Started
+## Fitur Utama
 
-This project is a starting point for a Flutter application.
+1. Kategori Berita - Jelajahi berita berdasarkan berbagai kategori seperti Teknologi, Olahraga, Kesehatan, dan lain-lain.
 
-A few resources to get you started if this is your first Flutter project:
+2. Sumber Berita - Lihat daftar sumber berita yang tersedia dalam setiap kategori.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+3. Artikel Berita - Tampilkan artikel dari sumber berita yang dipilih.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+4. Detail Artikel - Baca detail artikel langsung di dalam aplikasi menggunakan WebView.
+
+5. Pencarian Berita & Sumber - Cari sumber berita atau artikel tertentu berdasarkan kata kunci.
+
+6. Endless Scrolling - Muat lebih banyak sumber dan artikel secara otomatis saat melakukan scrolling.
+
+7. Handling Positive/Negative Cases - Aplikasi ini menampilkan pesan yang sesuai jika terjadi kesalahan atau data kosong.
+
+## Teknologi yang Digunakan
+
+1. Flutter (Dart) - Framework utama untuk pengembangan aplikasi.
+
+2. HTTP - Digunakan untuk mengambil data dari API.
+
+3. Provider - State management untuk mengelola data aplikasi.
+
+4. WebView - Untuk menampilkan detail artikel berita.
+
+## Instalasi dan Konfigurasi
+
+1. Clone repository ini:
+
+`git clone https://github.com/vchandra22/portal-berita-flutter.git`
+
+2. Masuk ke direktori proyek:
+
+3. cd portal-berita-flutter
+
+4. Install dependencies:
+
+5. flutter pub get
+
+6. Konfigurasi API Key:
+
+7. Daftar akun di NewsAPI.
+
+8. Dapatkan API key.
+
+9. Tambahkan API key ke file lib/services/news_service.dart:
+
+`final String apiKey = 'YOUR_API_KEY_HERE';`
+
+## Jalankan Aplikasi:
+
+`flutter run`
+
+## Kontribusi
+
+Jika Anda ingin berkontribusi ke proyek ini, silakan kunjungi [repository GitHub](https://github.com/vchandra22/portal-berita-flutter) untuk informasi lebih lanjut.
+
