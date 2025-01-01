@@ -6,9 +6,10 @@ class NewsService {
   final String apiKey = '85f3f67b5e134b4db359fba7cc8ab563';
   final String baseUrl = 'https://newsapi.org/v2';
 
-  Future<List<Article>> getTopHeadlines() async {
+  Future<List<Article>> getTopHeadlines({String category = 'general'}) async {
     final response = await http.get(
-      Uri.parse('$baseUrl/top-headlines?country=us&apiKey=$apiKey'),
+      Uri.parse(
+          '$baseUrl/top-headlines?country=us&category=$category&apiKey=$apiKey'),
     );
 
     if (response.statusCode == 200) {
