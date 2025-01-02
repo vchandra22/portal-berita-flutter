@@ -40,15 +40,15 @@ NewsApp adalah aplikasi mobile native yang menampilkan berita terkini dari berba
 
 4. Install dependencies:
 
-5. flutter pub get
+`flutter pub get`
 
-6. Konfigurasi API Key:
+5. Konfigurasi API Key:
 
-7. Daftar akun di NewsAPI.
+6. Daftar akun di NewsAPI.
 
-8. Dapatkan API key.
+7. Dapatkan API key.
 
-9. Tambahkan API key ke file lib/services/news_service.dart:
+8. Tambahkan API key ke file lib/services/news_service.dart:
 
 `final String apiKey = 'YOUR_API_KEY_HERE';`
 
