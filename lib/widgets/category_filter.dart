@@ -16,7 +16,7 @@ class CategoryFilter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      padding: const EdgeInsets.symmetric(vertical: 12),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
@@ -25,16 +25,28 @@ class CategoryFilter extends StatelessWidget {
           final isSelected = category == selectedCategory;
 
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: ChoiceChip(
-              label: Text(
-                category[0].toUpperCase() + category.substring(1), // Capitalize
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: TextButton(
+              onPressed: () => onCategorySelected(category),
+              style: TextButton.styleFrom(
+                backgroundColor:
+                    isSelected ? Colors.transparent : Colors.transparent,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20), // Rounded corners
+                  side: BorderSide(
+                    color: isSelected ? Colors.blue : Colors.grey,
+                    width: 0.5,
+                  ),
+                ),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               ),
-              selected: isSelected,
-              selectedColor: Colors.blue,
-              onSelected: (_) => onCategorySelected(category),
-              labelStyle: TextStyle(
-                color: isSelected ? Colors.white : Colors.black,
+              child: Text(
+                category[0].toUpperCase() + category.substring(1), // Capitalize
+                style: TextStyle(
+                  color: isSelected ? Colors.blue : Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           );

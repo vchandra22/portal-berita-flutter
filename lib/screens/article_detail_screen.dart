@@ -12,7 +12,11 @@ class ArticleDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: const Text('Article Detail'),
+        title: const Text(
+          'News Detail',
+          style: TextStyle(
+              color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -38,7 +42,9 @@ class ArticleDetailScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
-                article.description,
+                article.content.isNotEmpty
+                    ? article.content
+                    : 'Content not available.',
                 style: const TextStyle(fontSize: 16),
               ),
             ),

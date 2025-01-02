@@ -11,8 +11,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late Future<List<Article>> futureArticles;
-
   String selectedCategory = 'general';
+  String searchQuery = '';
+
   final List<String> categories = [
     'general',
     'business',
@@ -23,17 +24,27 @@ class _HomeScreenState extends State<HomeScreen> {
     'technology'
   ];
 
+  final TextEditingController _searchController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
-    futureArticles = NewsService().getTopHeadlines();
+    futureArticles = NewsService().getTopHeadlines(category: selectedCategory);
   }
 
   void onCategorySelected(String category) {
     setState(() {
       selectedCategory = category;
-      futureArticles =
-          NewsService().getTopHeadlines(category: selectedCategory);
+      futureArticles = NewsService()
+          .getTopHeadlines(category: selectedCategory, query: searchQuery);
+    });
+  }
+
+  void onSearchQueryChanged() {
+    setState(() {
+      searchQuery = _searchController.text;
+      futureArticles = NewsService()
+          .getTopHeadlines(category: selectedCategory, query: searchQuery);
     });
   }
 
@@ -42,11 +53,35 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: const Text('Top Headlines'),
+        title: const Text('Portal Berita',
+            style: TextStyle(
+                fontSize: 28,
+                color: Colors.white,
+                fontWeight: FontWeight.bold)),
         centerTitle: true,
       ),
       body: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _searchController,
+                    decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.search),
+                      labelText: 'Search',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      ),
+                    ),
+                    onChanged: (value) => onSearchQueryChanged(),
+                  ),
+                ),
+              ],
+            ),
+          ),
           CategoryFilter(
             categories: categories,
             selectedCategory: selectedCategory,
